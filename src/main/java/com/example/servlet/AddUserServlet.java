@@ -19,10 +19,16 @@ public class AddUserServlet extends HttpServlet {
     //save user in Warehouse
     //return request attribute "user"
     //navigate to /add page
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = Instant.now().toString() + request.getParameter("firstName");
-        String lastName = Instant.now().toString() + request.getParameter("lastName");
+        request.getRequestDispatcher("/add.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String firstName = Instant.now().toString() + "firstName";
+        String lastName = Instant.now().toString() + "lastName";
 
         User user = new User(firstName, lastName);
         Warehouse.addUser(user);
