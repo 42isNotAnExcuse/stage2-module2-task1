@@ -22,11 +22,6 @@ public class AddUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/add.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = Instant.now().toString() + "firstName";
         String lastName = Instant.now().toString() + "lastName";
 
@@ -35,5 +30,9 @@ public class AddUserServlet extends HttpServlet {
 
         request.setAttribute("user", user);
         request.getRequestDispatcher("/add.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
     }
 }
