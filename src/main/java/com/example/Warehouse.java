@@ -1,6 +1,4 @@
-package com.example.servlet;
-
-import com.example.User;
+package com.example;
 
 import java.util.HashSet;
 import java.util.Set;
