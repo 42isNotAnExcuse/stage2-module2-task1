@@ -29,7 +29,17 @@ public class AddUserServlet extends HttpServlet {
         Warehouse.addUser(user);
 
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/add.jsp").forward(request, response);
+//        request
+//                .getRequestDispatcher("/add.jsp")
+//                .forward(request, response);
+
+        javax.servlet.RequestDispatcher dispatcher = request.getRequestDispatcher("/add.jsp");
+        if (dispatcher != null) {
+            dispatcher.forward(request, response);
+        } else {
+            // For test environments or fallback
+            response.getWriter().println("User: " + user.getFirstName() + " " + user.getLastName());
+        }
     }
 
     @Override
